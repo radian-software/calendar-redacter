@@ -51,6 +51,18 @@ poetry run python -m calendar_redacter
 on a cron job with the desired frequency. Your events should show up
 automatically in the target calendar you specified.
 
+## Security considerations
+
+The redaction isn't very smart as this is mostly a proof of concept.
+Check the source code to see how I did it. Basically I just remove
+specific ICS fields that I saw contained unnecessary information.
+There could be some I missed that did not turn up in sample data.
+
+Event and calendar IDs are transformed by unsalted SHA1 since they
+sometimes contain email addresses and other information in them. You
+might still be able to reverse the hash if you have a good guess of
+what the original values were.
+
 ## More details?
 
 I wrote this documentation in 5 minutes. If something is unclear just
